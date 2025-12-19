@@ -16,19 +16,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # main ブランチを checkout
       - name: Checkout main
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # Node.js セットアップ
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
+      # result ブランチの最新を main/result に反映
+      - name: Copy previous results
+        run: |
+          git fetch origin result || echo "No result branch yet"
+          mkdir -p result
+          if git show origin/result:dist/result.json > /dev/null 2>&1; then
+            git show origin/result:dist/result.json > result/result.json
+            echo "Previous result.json copied to main/result/"
+          else
+            echo "No previous result.json"
+          fi
+
+      # 監視スクリプト実行
       - name: Run monitor
         run: node checks/index.js
 
+      # result ブランチに commit & push
       - name: Commit & Push result
         run: |
           git config user.name "github-actions[bot]"
