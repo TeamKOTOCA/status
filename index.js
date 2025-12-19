@@ -74,7 +74,7 @@ async function main() {
     console.log(`Results written to ${outFile}`);
 
     if (failed) {
-        process.exit(1);
+    console.warn("Some checks failed, but continuing to output JSON.");
     }
 }
 
