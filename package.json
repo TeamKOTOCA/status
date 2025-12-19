@@ -1,5 +1,6 @@
 {
   "name": "kotoca_status",
+  "type": "module",
   "version": "1.0.0",
   "main": "./checks/index.js",
   "scripts": {
