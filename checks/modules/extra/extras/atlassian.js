@@ -1,15 +1,28 @@
-export async function getStatus(serviceName) {
+const MAP = {
+    github: "https://www.githubstatus.com/",
+    render: "https://status.render.com/",
+    cloudflare: "https://www.cloudflarestatus.com/",
+    dropbox: "https://status.dropbox.com/",
+    notion: "https://www.notion-status.com/",
+    openai: "https://status.openai.com/",
+    discord: "https://discordstatus.com/"
+};
+
+export async function getStatus(serviceName, provider) {
     try {
         if (!serviceName) return null;
 
-        const res = await fetch("https://www.githubstatus.com/api/v2/components.json");
+        if (!provider) return null;
+        const status_url = MAP[provider] + "api/v2/components.json";
+
+        const res = await fetch(status_url);
         if (!res.ok) return null;
 
         const data = await res.json();
         if (!data?.components) return null;
 
         const comp = data.components.find(c =>
-        c.name.toLowerCase().includes(serviceName.toLowerCase())
+            c.name.toLowerCase().includes(serviceName.toLowerCase())
         );
 
         if (!comp) return null;

@@ -66,4 +66,26 @@ jobs:
             git push origin result
           else
             echo "No changes to commit"
-          fi
+
+  deploy:
+    needs: monitor
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run build
+        run: node build/index.js
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./final_html
+          publish_branch: gh-pages

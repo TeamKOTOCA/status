@@ -2,6 +2,8 @@
     "meta": {
         "title": "KOTOCA status",
         "logo": "https://kotoca.net/KOTOCA(1).webp",
+        "favicon": "https://kotoca.net/KOTOCA(1).webp",
+        "theme": "dark",
         "color": {
             "theme": "#feeeee",
             "sub": "#feeeee",
@@ -37,14 +39,15 @@
                 "url": "https://kotoca.net",
                 "host": "kotoca.net",
 
-                    "http": true,
-                    "head": true,
-                    "restime": true,
-                    "dns": true,
-                    "tcp": {
+                "http": true,
+                "head": true,
+                "restime": true,
+                "dns": true,
+                "tcp": {
                     "port": 443
-                    }
-                }
+                },
+                "ping": true
+            }
         },
         {
             "label": "kotocaAPI",
@@ -60,12 +63,31 @@
                 "dns": true,
                 "tcp": {
                 "port": 443
-                }
+                },
+                "ping": true
             }
         },
         {
-            "label": "cloudflare workers",
-            "category": "extras",
+            "label": "GitHub Actions",
+            "category": "core",
+            "type": "provider",
+            "meta": {
+                "provider": "github",
+                "service": "actions"
+            }
+        },
+        {
+            "label": "Render Dashboard",
+            "category": "core",
+            "type": "provider",
+            "meta": {
+                "provider": "render",
+                "service": "dashboard"
+            }
+        },
+        {
+            "label": "Cloudflare Workers",
+            "category": "core",
             "type": "provider",
             "meta": {
                 "provider": "cloudflare",
@@ -73,12 +95,48 @@
             }
         },
         {
-            "label": "GitHub",
-            "category": "extras",
+            "label": "Dropbox",
+            "category": "core",
             "type": "provider",
             "meta": {
-                "provider": "github",
-                "service": "action"
+                "provider": "dropbox",
+                "service": "website"
+            }
+        },
+        {
+            "label": "Notion",
+            "category": "core",
+            "type": "provider",
+            "meta": {
+                "provider": "notion",
+                "service": "api"
+            }
+        },
+        {
+            "label": "OpenAI",
+            "category": "core",
+            "type": "provider",
+            "meta": {
+                "provider": "openai",
+                "service": "api"
+            }
+        },
+        {
+            "label": "discord",
+            "category": "core",
+            "type": "provider",
+            "meta": {
+                "provider": "discord",
+                "service": "api"
+            }
+        },
+        {
+            "label": "x",
+            "category": "core",
+            "type": "provider",
+            "meta": {
+                "provider": "x",
+                "service": "gnip"
             }
         }
     ]

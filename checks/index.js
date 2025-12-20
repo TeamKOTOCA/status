@@ -69,8 +69,8 @@ async function checkSelf(target) {
         results.tcp = r;
         if (!r.ok) failed = true;
         } catch (e) {
-        results.tcp = { ok: false, error: e.message };
-        failed = true;
+            results.tcp = { ok: false, error: e.message };
+            failed = true;
         }
     }
 
