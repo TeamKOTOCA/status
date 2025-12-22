@@ -22,7 +22,7 @@
     <meta name="twitter:title" content="{{title}} status / gitstatus">
     <meta name="twitter:description" content="{{title}} status / gitstatus - サービス稼働状況をリアルタイムで確認">
     <meta name="twitter:image" content="{{logo}}">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./../style.css">
 </head>
 <body>
     <header>
@@ -31,25 +31,14 @@
             <h1>{{title}}ステータス</h1>
             <p>最終更新: <span>{{lasttime}}</span></p>
         </div>
-        <div id="top_status">
-            <p>全てのサービスが正常に稼働中です。</p>
-        </div>
+        <a style="margin-left: 20px;" href="./../index.html">Topへ</a>
     </header>
 
-    <main>
-        <section id="incidents">
-            <h2>現在の障害状況</h2>
-            <div id="incidents_div">
-            </div>
-        </section>
-        <section>
-            <h2>サービス一覧</h2>
-        </section>
+    <main style="margin-top: 50px;">
+        {{incident_contents}}
     </main>
     <script>
-        window.addEventListener('scroll', () =>
-            document.body.classList.toggle('scrolled', scrollY > 80)
-        );
+        document.body.classList.add("scrolled");
     </script>
 </body>
 </html>

@@ -1,24 +1,31 @@
+:root {
+    --bg-color: #1a1a1a;
+}
+
 body,html{
     margin: 0;
     padding: 0;
+    background-color: var(--bg-color);
+}
+h1,h2,h3,p,a{
+    color: #ffffff;
 }
 
 header{
     height: 50vh;
     margin: 0;
     background-image:
-        linear-gradient(#ffffff2a, #ffffffc5),
+        linear-gradient(#1a1a1a2a, #1a1a1ac5),
         url("https://kotoca.net/KOTOCA.webp");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-
-
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
     transition: height 0.4s ease, padding 0.4s ease;
+    border-radius: 0 0 20px 20px;
 }
 header img{
     display: none;
@@ -29,23 +36,80 @@ header h1{
     margin: 0;
     text-align: center;
 }
+#top_status{
+    background-color: #159740;
+    padding: 20px;
+    border-radius: 5px;
+}
+#top_status p{
+    margin: 0;
+    color: #fff;
+}
 
+main{
+    margin: 10px auto;
+    width: 90vw;
+    max-width: 800px;
+}
+#incidents a{
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+#incidents a h3, #incidents a p{
+    margin: 0;
+    color: #fff;
+}
+.incident_error{
+    background-color: #cc0000;
+    border: #aa0000 solid 2px;
+    border-left: #aa0000 solid 5px;
+}
+.incident_warn{
+    background-color: #dbba00;
+    border-left: #8f8300 solid 5px;
+}
+.incident_info{
+    background-color: #108ec9;
+    border: #108ec9 solid 2px;
+    border-left: #0275aa solid 5px;
+}
 
 body.scrolled header{
     height: 60px;
     position: fixed;
     top: 10px;
     left: 10px;
-    width: calc(100% - 20px);
+    padding: 0 10px;
+    width: calc(100% - 40px);
     border-radius: 10px;
-    flex-direction: row;
     background: none;
-    background-color: #fff;
-    box-shadow: #aaa 0px 0px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    background-color: #1a1a1a;
+    box-shadow: #ffffff22 0px 0px 10px;
 }
 body.scrolled header img{
     display: block;
     opacity: 1;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+}
+body.scrolled header div{
+    display: block;
+    margin-left: 10px;
+}
+body.scrolled header h1{
+    margin: 0;
+    font-size: 25px;
+}
+body.scrolled header p{
+    margin: 0 0 0 10px;
+    font-size: 8px;
+}
+body.scrolled #top_status{
+    display: none;
 }

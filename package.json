@@ -21,9 +21,11 @@
     "axios": "^1.13.2",
     "dns": "^0.2.2",
     "fs": "^0.0.1-security",
+    "gray-matter": "^4.0.3",
     "http": "^0.0.1-security",
     "https": "^1.0.0",
     "jsdom": "^27.3.0",
+    "marked": "^17.0.1",
     "net": "^1.0.2",
     "node-fetch": "^3.3.2",
     "path": "^0.12.7"
