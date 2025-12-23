@@ -42,7 +42,7 @@ jobs:
             echo "No previous history found. Starting new."
           fi
           
-          node checks/index.js
+          node scripts/checks/index.js
 
       - name: Commit & Push result
         run: |
@@ -91,7 +91,7 @@ jobs:
         run: npm install
 
       - name: Run build
-        run: node build/index.js
+        run: node scripts/build/index.js
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

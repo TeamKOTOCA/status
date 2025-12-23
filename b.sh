@@ -2,6 +2,6 @@
 
 # メインループ
 while true; do
-  node ./checks/index.js
+  node ./scripts/checks/index.js
   sleep 1
 done

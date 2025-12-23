@@ -2,7 +2,7 @@
   "name": "GitUptimeHub",
   "type": "module",
   "version": "0.0.1",
-  "main": "./checks/index.js",
+  "main": "./scripts/checks/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

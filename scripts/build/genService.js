@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 
 const RESULT_DIR = "./result";
+const SETTING_PATH = "./setting.json";
+const setting = JSON.parse(fs.readFileSync(SETTING_PATH, "utf-8"));
 
 function normalizeStatus(item) {
     // provider 系
@@ -41,14 +43,29 @@ export async function generateServicesHTML() {
 
     const data = {};
 
+    const labelToCategory = {};
+    for (const t of setting.targets ?? []) {
+        if (t.label && t.category) {
+            labelToCategory[t.label] = t.category;
+        }
+    }
+    const categoryIdToLabel = {};
+    for (const c of setting.categories ?? []) {
+        if (c.id && c.label) {
+            categoryIdToLabel[c.id] = c.label;
+        }
+    }
+
     for (const file of files) {
         const json = JSON.parse(
             fs.readFileSync(path.join(RESULT_DIR, file), "utf-8")
         );
 
         for (const item of json.results ?? []) {
-            const category = item.category ?? "uncategorized";
             const label = item.label ?? "unknown";
+            const category = labelToCategory[label];
+            if (!categoryIdToLabel[category]) continue;
+            
             const status = normalizeStatus(item);
 
             if (!data[category]) data[category] = {};
@@ -64,7 +81,8 @@ export async function generateServicesHTML() {
 
     // HTML生成
     for (const [category, services] of Object.entries(data)) {
-        html += `<div>\n<h2>${category}</h2>\n`;
+        const categoryLabel = categoryIdToLabel[category] ?? category;
+        html += `<div>\n<h2>${categoryLabel}</h2>\n`;
 
         for (const [label, history] of Object.entries(services)) {
             html += `

@@ -2,6 +2,6 @@
 
 # メインループ
 while true; do
-  node ./build/index.js
+  node ./scripts/build/index.js
   sleep 5
 done
