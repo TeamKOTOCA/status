@@ -42,17 +42,17 @@
             <div id="incidents_div">
 
 <a href="./incidents/2025-12-21.html" class="incident_warn">
-    <h3>aaa</h3>
+    <h3>注意</h3>
     <p>aaa</p>
 </a>
         
 <a href="./incidents/2025-12-22.html" class="incident_info">
-    <h3>aaa</h3>
-    <p>aaa</p>
+    <h3>情報</h3>
+    <p>メンテナンスなど</p>
 </a>
         
 <a href="./incidents/2025-12-23.html" class="incident_error">
-    <h3>aaa</h3>
+    <h3>エラー</h3>
     <p>aaa</p>
 </a>
         
@@ -686,6 +686,11 @@
         window.addEventListener('scroll', () =>
             document.body.classList.toggle('scrolled', scrollY > 80)
         );
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.se_div').forEach(seDiv => {
+                seDiv.scrollLeft = seDiv.scrollWidth;
+            });
+        });
     </script>
 </body>
 </html>

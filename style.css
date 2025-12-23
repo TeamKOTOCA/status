@@ -98,6 +98,7 @@ main{
 }
 .se_div{
     display: flex;
+    width: 100%;
     overflow-x: scroll;
     scrollbar-width: thin;
 }
@@ -105,6 +106,8 @@ main{
     width: 5px;
     margin-left: 5px;
     height: 20px;
+    min-width: 5px;
+    flex-shrink: 0;
 }
 .se_operational{
     background-color: #159740;
@@ -116,6 +119,9 @@ main{
     background-color: #971515;
 }
 
+body.scrolled{
+    padding-top: 300px;
+}
 body.scrolled header{
     height: 60px;
     position: fixed;
