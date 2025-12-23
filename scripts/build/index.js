@@ -3,6 +3,8 @@ import path from 'path';
 import matter from 'gray-matter'; 
 import { marked } from 'marked';
 import { generateServicesHTML } from './genService.js';
+import { generatePastIncidentsHTML } from './genPastIncidents.js';
+import { checkDeadServicesHTML } from './checkdead.js';
 
 // パス設定
 const SRC_DIR = path.resolve('./src');
@@ -146,6 +148,16 @@ async function copyAndReplace() {
                 content = content.replace(
                     /<div id="services_div"><\/div>/,
                     `<div id="services_div">\n${servicesHTML}\n</div>`
+                );
+                const pastHTML = await generatePastIncidentsHTML();
+                content = content.replace(
+                    /<div id="pastincident_div"><\/div>/,
+                    `<div id="pastincident_div">\n${pastHTML}\n</div>`
+                );
+                const deadHTML = await checkDeadServicesHTML();
+                content = content.replace(
+                    /<div id="top_status"><\/div>/,
+                    `${deadHTML}`
                 );
             }
 

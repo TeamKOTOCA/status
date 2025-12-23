@@ -31,9 +31,7 @@
             <h1>{{title}}ステータス</h1>
             <p>最終更新: <span>{{lasttime}}</span></p>
         </div>
-        <div id="top_status">
-            <p>全てのサービスが正常に稼働中です。</p>
-        </div>
+        <div id="top_status"></div>
     </header>
 
     <main>
@@ -45,11 +43,16 @@
             <h2>サービス一覧</h2>
             <div id="services_div"></div>
         </section>
-        <section style="height: 1000px;">
+        <section>
             <h2>過去の障害</h2>
-            <div id="incidented_div"></div>
+            <div id="pastincident_div"></div>
         </section>
     </main>
+
+    <footer>
+        <p>The repository is <a href="https://github.com/TeamKOTOCA/GitUptimeHub/">here</a>. powered by <a href="https://kotoca.net">TeamKOTOCA</a></p>
+    </footer>
+
     <script>
         window.addEventListener('scroll', () =>
             document.body.classList.toggle('scrolled', scrollY > 80)

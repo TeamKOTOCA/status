@@ -39,14 +39,6 @@ async function validateSetting() {
     assert(isURL(meta.favicon), 'meta.favicon は URL 必須');
     assert(['dark', 'light'].includes(meta.theme), 'meta.theme は dark | light');
 
-    if (meta.footer_links) {
-        assert(Array.isArray(meta.footer_links), 'footer_links は配列');
-        meta.footer_links.forEach((l, i) => {
-            assert(isString(l.label), `footer_links[${i}].label 不正`);
-            assert(isString(l.url), `footer_links[${i}].url 不正`);
-        });
-    }
-
     /* ===== categories ===== */
     const categoryIds = new Set();
     json.categories.forEach((c, i) => {

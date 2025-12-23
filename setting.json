@@ -3,17 +3,7 @@
         "title": "KOTOCA",
         "logo": "https://kotoca.net/KOTOCA.webp",
         "favicon": "https://kotoca.net/KOTOCA.webp",
-        "theme": "dark",
-        "footer_links": [
-            {
-                "label": "Website",
-                "url": "https://kotoca.net"
-            },
-            {
-                "label": "contact",
-                "url": "mailto:contact@kotoca.net"
-            }
-        ]
+        "theme": "light"
     },
     "categories": [
         {

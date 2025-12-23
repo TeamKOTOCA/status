@@ -145,7 +145,7 @@ async function main() {
         .filter(f => f.endsWith(".json"))
         .sort();
 
-    const MAX_FILES = 50;
+    const MAX_FILES = 100;
     if (files.length > MAX_FILES) {
         const removeTargets = files.slice(0, files.length - MAX_FILES);
         for (const file of removeTargets) {
