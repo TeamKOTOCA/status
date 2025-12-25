@@ -11,6 +11,11 @@ on:
 permissions:
   contents: write
 
+env:
+  DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+  NOMAL_WEBHOOK_URL: ${{ secrets.NOMAL_WEBHOOK_URL }}
+
 jobs:
   check:
     runs-on: ubuntu-latest

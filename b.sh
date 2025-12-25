@@ -3,5 +3,5 @@
 # メインループ
 while true; do
   node ./scripts/checks/index.js
-  sleep 1
+  sleep 5
 done

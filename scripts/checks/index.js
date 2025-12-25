@@ -7,6 +7,7 @@ import * as tcpChecks from "./modules/tcp.js";
 import * as dnsChecks from "./modules/dns.js";
 import * as restimeChecks from "./modules/restime.js";
 import { getServiceStatus } from "./modules/extra/extra.js";
+import { sendWebhook } from "./webhooks/index.js";
 
 async function checkSelf(target) {
     const { meta } = target;
@@ -157,7 +158,7 @@ async function main() {
     if (failed) {
         console.warn("Some checks failed, but JSON was still generated.");
     }
-
+    sendWebhook();
 }
 
 main().catch((err) => {
