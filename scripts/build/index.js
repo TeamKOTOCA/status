@@ -34,7 +34,7 @@ async function getLastTime() {
 
 async function replaceALL(content) {
     const setting = JSON.parse(await fs.readFile(SETTING_PATH, 'utf-8'));
-    const meta = setting.meta || {};
+    const meta = setting.common || {};
 
     meta.lasttime = await getLastTime();
     return content.replaceAll(/\{\{(\w+)\}\}/g, (match, key) => {

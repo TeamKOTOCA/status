@@ -14,15 +14,13 @@ async function checkSelf(target) {
     const results = {};
     let failed = false;
 
-    // HTTP(GET)
-    if (meta.http && meta.url) {
+    // URLからホスト名（ドメイン）を自動抽出（DNSやTCPチェックに利用）
+    let host = "";
+    if (meta.url) {
         try {
-        const r = await httpdChecks.check_http(meta.url);
-        results.http = r;
-        if (!r.ok) failed = true;
+            host = new URL(meta.url).hostname;
         } catch (e) {
-        results.http = { ok: false, error: e.message };
-        failed = true;
+            host = meta.url; // URL形式でない場合はそのまま
         }
     }
 
@@ -50,25 +48,25 @@ async function checkSelf(target) {
         }
     }
 
-    // DNS
-    if (meta.dns && meta.host) {
+// DNS (meta.host ではなく自動抽出した host を使う)
+    if (meta.dns && host) {
         try {
-        const r = await dnsChecks.check_dns(meta.host);
-        results.dns = r;
-        if (!r.ok) failed = true;
+            const r = await dnsChecks.check_dns(host);
+            results.dns = r;
+            if (!r.ok) failed = true;
         } catch (e) {
-        results.dns = { ok: false, error: e.message };
-        failed = true;
+            results.dns = { ok: false, error: e.message };
+            failed = true;
         }
     }
 
-    // TCP
-    if (meta.tcp_port && meta.host) {
-
+    // TCP (meta.tcp_port ではなく meta.tcp.port を参照)
+    // また、host も自動抽出したものを使用
+    if (meta.tcp && meta.tcp.port && host) {
         try {
-        const r = await tcpChecks.check_tcp(meta.host, meta.tcp_port);
-        results.tcp = r;
-        if (!r.ok) failed = true;
+            const r = await tcpChecks.check_tcp(host, meta.tcp.port);
+            results.tcp = r;
+            if (!r.ok) failed = true;
         } catch (e) {
             results.tcp = { ok: false, error: e.message };
             failed = true;

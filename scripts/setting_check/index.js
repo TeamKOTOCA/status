@@ -28,16 +28,17 @@ async function validateSetting() {
     const json = JSON.parse(raw);
 
     /* ===== root ===== */
-    assert(json.meta, 'meta が存在しません');
+    // --- 修正: meta から common へ ---
+    assert(json.common, 'common が存在しません');
     assert(Array.isArray(json.categories), 'categories は配列である必要があります');
     assert(Array.isArray(json.targets), 'targets は配列である必要があります');
 
-    /* ===== meta ===== */
-    const meta = json.meta;
-    assert(isString(meta.title), 'meta.title は string 必須');
-    assert(isURL(meta.logo), 'meta.logo は URL 必須');
-    assert(isURL(meta.favicon), 'meta.favicon は URL 必須');
-    assert(['dark', 'light'].includes(meta.theme), 'meta.theme は dark | light');
+    /* ===== common (旧 meta) ===== */
+    const common = json.common;
+    assert(isString(common.title), 'common.title は string 必須');
+    assert(isURL(common.logo), 'common.logo は URL 必須');
+    assert(isURL(common.favicon), 'common.favicon は URL 必須');
+    assert(['dark', 'light'].includes(common.theme), 'common.theme は dark | light');
 
     /* ===== categories ===== */
     const categoryIds = new Set();
@@ -72,13 +73,16 @@ async function validateSetting() {
             const m = t.meta;
 
             assert(isURL(m.url), `targets[${i}].meta.url 不正`);
-            assert(isString(m.host), `targets[${i}].meta.host 不正`);
+            
+            // --- 修正: host は URL から自動抽出するため、設定ファイルでの必須チェックを外す、または任意にする ---
+            if (m.host) assert(isString(m.host), `targets[${i}].meta.host は string である必要があります`);
 
             ['http', 'head', 'restime', 'dns', 'ping'].forEach(k => {
                 if (k in m) assert(isBoolean(m[k]), `targets[${i}].meta.${k} は boolean`);
             });
 
             if (m.tcp) {
+                // --- 修正: エディタ側の構造 (meta.tcp.port) に合わせる ---
                 assert(
                     Number.isInteger(m.tcp.port) &&
                     m.tcp.port >= 1 &&
