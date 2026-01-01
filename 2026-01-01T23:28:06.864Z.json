@@ -1,0 +1,179 @@
+{
+  "generatedAt": "2026-01-01T23:28:06.864Z",
+  "results": [
+    {
+      "label": "kotoca公式サイト",
+      "category": "kotoca_services",
+      "type": "self",
+      "results": {
+        "head": {
+          "ok": true,
+          "statusCode": 200,
+          "timeMs": 206
+        },
+        "restime": {
+          "ok": true,
+          "statusCode": 200,
+          "timeMs": 13
+        },
+        "dns": {
+          "ok": true,
+          "addresses": [
+            "185.199.110.153",
+            "185.199.111.153",
+            "185.199.108.153",
+            "185.199.109.153"
+          ],
+          "timeMs": 1
+        },
+        "tcp": {
+          "ok": true,
+          "timeMs": 138
+        }
+      },
+      "time": "2026-01-01T23:28:03.633Z"
+    },
+    {
+      "label": "kotocaAPI",
+      "category": "kotoca_services",
+      "type": "self",
+      "results": {
+        "head": {
+          "ok": true,
+          "statusCode": 200,
+          "timeMs": 872
+        },
+        "restime": {
+          "ok": true,
+          "statusCode": 200,
+          "timeMs": 291
+        },
+        "dns": {
+          "ok": true,
+          "addresses": [
+            "216.24.57.251",
+            "216.24.57.7"
+          ],
+          "timeMs": 1
+        },
+        "tcp": {
+          "ok": true,
+          "timeMs": 28
+        }
+      },
+      "time": "2026-01-01T23:28:04.825Z"
+    },
+    {
+      "label": "GitHub Actions",
+      "category": "core",
+      "type": "provider",
+      "results": {
+        "ok": true,
+        "provider": "github",
+        "status": {
+          "name": "Actions",
+          "normalizedStatus": "operational"
+        }
+      },
+      "time": "2026-01-01T23:28:05.078Z"
+    },
+    {
+      "label": "Render Dashboard",
+      "category": "core",
+      "type": "provider",
+      "results": {
+        "ok": true,
+        "provider": "render",
+        "status": {
+          "name": "Render Dashboard",
+          "normalizedStatus": "operational"
+        }
+      },
+      "time": "2026-01-01T23:28:05.323Z"
+    },
+    {
+      "label": "Cloudflare Workers",
+      "category": "core",
+      "type": "provider",
+      "results": {
+        "ok": true,
+        "provider": "cloudflare",
+        "status": {
+          "name": "Workers",
+          "normalizedStatus": "operational"
+        }
+      },
+      "time": "2026-01-01T23:28:05.545Z"
+    },
+    {
+      "label": "Dropbox",
+      "category": "core",
+      "type": "provider",
+      "results": {
+        "ok": true,
+        "provider": "dropbox",
+        "status": {
+          "name": "Website",
+          "normalizedStatus": "operational"
+        }
+      },
+      "time": "2026-01-01T23:28:05.801Z"
+    },
+    {
+      "label": "Notion",
+      "category": "core",
+      "type": "provider",
+      "results": {
+        "ok": true,
+        "provider": "notion",
+        "status": {
+          "name": "Notion API",
+          "normalizedStatus": "operational"
+        }
+      },
+      "time": "2026-01-01T23:28:06.198Z"
+    },
+    {
+      "label": "OpenAI",
+      "category": "core",
+      "type": "provider",
+      "results": {
+        "ok": true,
+        "provider": "openai",
+        "status": {
+          "name": "Compliance API",
+          "normalizedStatus": "operational"
+        }
+      },
+      "time": "2026-01-01T23:28:06.343Z"
+    },
+    {
+      "label": "discord",
+      "category": "core",
+      "type": "provider",
+      "results": {
+        "ok": true,
+        "provider": "discord",
+        "status": {
+          "name": "API",
+          "normalizedStatus": "operational"
+        }
+      },
+      "time": "2026-01-01T23:28:06.618Z"
+    },
+    {
+      "label": "x",
+      "category": "core",
+      "type": "provider",
+      "results": {
+        "ok": true,
+        "provider": "x",
+        "status": {
+          "name": "GNIP Enterprise API",
+          "normalizedStatus": "operational"
+        }
+      },
+      "time": "2026-01-01T23:28:06.863Z"
+    }
+  ]
+}
