@@ -51,27 +51,30 @@ jobs:
 
       - name: Commit & Push result
         run: |
-          if [ ! -d "result-data" ]; then
-            mkdir result-data
-            cd result-data
-            git init
-            git checkout -b result
-            cd ..
-          fi
-
-          cp -r result/* result-data/
-          
-          cd result-data
           git config user.name "GitupdatehubBot"
           git config user.email "gitupdatehubbot@users.noreply.github.com"
-
-          git add .
+      
+          # result ブランチが存在するか確認してなければ作る
+          if git ls-remote --exit-code --heads origin result; then
+            echo "result branch exists. Checking out."
+            git checkout -B result origin/result
+          else
+            echo "result branch does not exist. Creating..."
+            git checkout -B result
+          fi
+      
+          # result ディレクトリを反映
+          mkdir -p result-data
+          cp -r result/* result-data/
+      
+          git add result-data
           if ! git diff --cached --exit-code --quiet; then
             git commit -m "Update monitor results $(date +'%Y-%m-%d %H:%M:%S')"
-            git push origin result
+            git push origin HEAD:result
           else
             echo "No changes to commit"
           fi
+
 
   deploy:
     needs: check
